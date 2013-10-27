@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Dialog demo</title>
+<link rel="stylesheet" href="../base/css/reset.css" />
+<link rel="stylesheet" href="../assets/css/demo.css" />
+<link rel="stylesheet" href="css/dialog_style.css" />
+</head>
+<body>
+
+<h1>Dialog demo <a href="https://github.com/chenmnkken/ecope/wiki/Dialog-%E5%AF%B9%E8%AF%9D%E6%A1%86" target="_blank">#view docs</a></h1>
+<hr />
+
+<div class="wrapper">
+        <div class="example_box">
+        <h5>例子1</h5>
+        <p>创建一个对话框。</p>   
+        <div class="code_box">
+        <pre class="brush: js;">new $.ui.Dialog( '#runDemo1', {
+    title : '对话框标题',
+    content : '对话框内容',
+    yesFn : function(){
+        alert( '我是确定按钮，回调函数返回false时不会关闭对话框。' );
+        return false;
+    },
+    noFn : function(){
+        alert( '我是取消按钮' );
+    }
+});</pre>
+        </div>     
+        <p><a href="javascript:;" id="runDemo1" class="btn">运行</a></p>        
+    </div>     
+    
+    <div class="example_box">
+        <h5>例子2</h5>
+        <p>创建一个对话框，不要遮罩层，传递 HTML 字符串作为内容。</p>   
+        <div class="code_box">
+        <pre class="brush: js;">new $.ui.Dialog( '#runDemo2', {
+    content : '不设置标题，直接不显示标题栏',
+    overlay : false
+});</pre>
+        </div>     
+        <p><a href="javascript:;" id="runDemo2" class="btn">运行</a></p>        
+    </div>      
+    
+    <div class="example_box">
+        <h5>例子3</h5>
+        <p>创建一个对话框，并设置其显示和隐藏的动画效果为淡入淡出。</p>   
+        <div class="code_box">
+        <pre class="brush: js;">new $.ui.Dialog( '#runDemo3', {
+    title : '对话框的动画效果',
+    content : '显示和隐藏对话框的动画效果为淡入淡出。',
+    effects : 'fade'
+});</pre>
+        </div>     
+        <p><a href="javascript:;" id="runDemo3" class="btn">运行</a></p>        
+    </div>     
+    
+    <div class="example_box">
+        <h5>例子4</h5>
+        <p>创建一个对话框，并设置其显示和隐藏的动画效果为滑动。</p>   
+        <div class="code_box">
+        <pre class="brush: js;">new $.ui.Dialog( '#runDemo4', {
+    title : '对话框的动画效果',
+    content : '显示和隐藏对话框的动画效果为滑动。',
+    effects : 'slide'
+});</pre>
+        </div>     
+        <p><a href="javascript:;" id="runDemo4" class="btn">运行</a></p>        
+    </div>     
+
+    <div class="example_box">
+        <h5>例子5</h5>
+        <p>创建一个对话框，并设置其显示和隐藏的动画效果为缩放。</p>   
+        <div class="code_box">
+        <pre class="brush: js;">new $.ui.Dialog( '#runDemo5', {
+    title : '对话框的动画效果',
+    content : '显示和隐藏对话框的动画效果为缩放。',
+    effects : 'zoom'
+});</pre>
+        </div>     
+        <p><a href="javascript:;" id="runDemo5" class="btn">运行</a></p>        
+    </div>    
+
+    <div class="example_box">
+        <h5>例子6</h5>
+        <p>创建一个对话框，并设置其在左上角显示。</p>   
+        <div class="code_box">
+        <pre class="brush: js;">new $.ui.Dialog( '#runDemo6', {
+    title : '非垂直居中的对话框',
+    content : '设置对话框在左上角显示。',
+    top : '100px',
+    left : '100px'
+});</pre>
+        </div>     
+        <p><a href="javascript:;" id="runDemo6" class="btn">运行</a></p>        
+    </div>   
+
+    <div class="example_box">
+        <h5>例子7</h5>
+        <p>自定义对话框的HTML结构。</p>  
+        <div class="code_box">
+        <pre class="brush: js;">&lt;div id="testBox" style="width:120px; height:100px; background:#fff; text-align:center; line-height:100px; display:none;"&gt;Press Esc close.&lt;/div&gt;</pre>
+        </div>          
+        <div class="code_box">
+        <pre class="brush: js;">new $.ui.Dialog( '#runDemo7', {
+    elem : '#testBox',
+    dragHandle : '#testBox'
+});</pre>
+        </div>     
+        <p><a href="javascript:;" id="runDemo7" class="btn">运行</a></p>        
+    </div>
+
+    <div id="testBox" style="width:120px; height:100px; background:#fff; text-align:center; line-height:100px; display:none;">Press Esc close.</div>    
+</div>
+
+<script type="text/javascript" src="../base/js/seed-jquery.js"></script>
+<script type="text/javascript" src="../assets/js/shcore.js"></script>
+<script type="text/javascript" src="../assets/js/shbrushjscript.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<script type="text/javascript">
+seed.config({
+    baseUrl : './js/'
+});
+
+
+seed.use( 'dialog', function(){
+    new $.ui.Dialog( '#runDemo1', {
+        title : '对话框标题',
+        content : '对话框内容',
+        yesFn : function(){
+            alert( '我是确定按钮，回调函数返回false时不会关闭对话框。' );
+            return false;
+        },
+        noFn : function(){
+            alert( '我是关闭的回调' );
+        }
+    });
+    
+    new $.ui.Dialog( '#runDemo2', {
+        content : '不设置标题，直接不显示标题栏',
+        overlay : false
+    });
+    
+    new $.ui.Dialog( '#runDemo3', {
+        title : '对话框的动画效果',
+        content : '显示和隐藏对话框的动画效果为淡入淡出。',
+        effects : 'fade'
+    });   
+
+    new $.ui.Dialog( '#runDemo4', {
+        title : '对话框的动画效果',
+        content : '显示和隐藏对话框的动画效果为滑动。',
+        effects : 'slide'
+    });     
+    
+    new $.ui.Dialog( '#runDemo5', {
+        title : '对话框的动画效果',
+        content : '显示和隐藏对话框的动画效果为缩放。',
+        effects : 'zoom'
+    });       
+    
+    new $.ui.Dialog( '#runDemo6', {
+        title : '非垂直居中的对话框',
+        content : '设置对话框在左上角显示。',
+        top : '100px',
+        left : '100px'
+    });        
+    
+    new $.ui.Dialog( '#runDemo7', {
+        elem : '#testBox',
+        dragHandle : '#testBox'
+    });    
+});
+</script>
+</body>
+</html>

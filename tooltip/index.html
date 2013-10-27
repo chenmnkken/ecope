@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Tooltip demo</title>
+<link rel="stylesheet" href="../base/css/reset.css" />
+<link rel="stylesheet" href="../assets/css/demo.css" />
+<link rel="stylesheet" href="css/tooltip_style.css" />
+</head>
+<body>
+
+<h1>Tooltip demo <a href="https://github.com/chenmnkken/ecope/wiki/Tooltip-%E5%B7%A5%E5%85%B7%E6%8F%90%E7%A4%BA" target="_blank">#view docs</a></h1>
+<hr />
+
+<div class="wrapper">
+    <div class="example_box">
+        <h5>例子1</h5>
+        <p>为下面的链接添加工具提示。</p>
+        <div class="demo_box">
+            <p id="demoPara">通过使用 <a href="#" title="Windows Defender 可帮助防止病毒、间谍软件和其他恶意或不需要的软件在你不知情的情况下安装到你的电脑上。">Windows Defender</a> 和 <a href="#" title="Windows 防火墙可以帮助防止黑客和恶意软件（如病毒）通过 Internet 访问你的电脑。 ">Windows</a> 防火墙等功能、安装重要更新和备份文件，有助于使你的电脑更安全。</p>
+        </div>    
+        <div class="code_box">
+        <pre class="brush: js;">new $.ui.Tooltip( '#demoPara a' );</pre>
+        </div>          
+    </div>     
+    
+    <div class="example_box">
+        <h5>例子2</h5>
+        <p>为下面的按钮添加工具提示，设置工具提示在按钮左边显示，并通过参数传递内容。</p>
+        <p><a href="javascript:;" id="runDemo1" class="btn">click</a></p>   
+        <div class="code_box">
+        <pre class="brush: js;">new $.ui.Tooltip( '#runDemo1', {
+    position : 'right',
+    trigger : 'click',
+    content : '&lt;b&gt;点击&lt;/b&gt;触发'
+});</pre>
+        </div>          
+    </div>         
+</div>
+
+<script type="text/javascript" src="../base/js/seed-jquery.js"></script>
+<script type="text/javascript" src="../assets/js/shcore.js"></script>
+<script type="text/javascript" src="../assets/js/shbrushjscript.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<script type="text/javascript">
+seed.config({
+    baseUrl : './js/'
+});
+
+seed.use( 'tooltip', function(){
+    new $.ui.Tooltip( '#demoPara a' );
+    
+    new $.ui.Tooltip( '#runDemo1', {
+        position : 'right',
+        trigger : 'click',
+        content : '<b>点击</b>触发'
+    });
+});
+</script>
+
+</body>
+</html>

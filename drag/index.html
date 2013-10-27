@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Drag demo</title>
+<link rel="stylesheet" href="../base/css/reset.css" />
+<link rel="stylesheet" href="../assets/css/demo.css" />
+</head>
+<body>
+<h1>Drag demo <a href="https://github.com/chenmnkken/ecope/wiki/Drag-%E6%8B%96%E6%8B%BD" target="_blank">#view docs</a></h1>
+<hr />
+
+<div class="wrapper">
+
+<div class="example_box">
+        <h5>例子1</h5>
+        <p>对 div 元素绑定拖拽，不限定拖拽范围，在没设置定位时，拖拽组件会自动对齐自动设置相对定位，也支持设置了绝对定位、固定定位( 包括IE6的模拟 )。在拖拽开始和结束时对其背景进行修改。</p>
+        <div class="demo_box">
+            <div style="width:100px;height:100px;background:#333;line-height:100px;color:#fff;text-align:center;" id="box1">box1</div>  
+        </div>    
+        <p>实例化拖拽组件。</p> 
+        <div class="code_box">
+        <pre class="brush: js;">var drag1 = new $.ui.Drag( '#box1' );
+
+// 绑定拖拽开始时的事件
+drag1.on( 'dragstart', function( e ){
+        $( e.drag ).css( 'backgroundColor', '#666' );
+    })
+    // 支持链式调用，绑定结束时的事件
+    .on( 'dragend', function( e ){
+        $( e.drag ).css( 'backgroundColor', '#333' );
+    });</pre>
+        </div>          
+    </div>           
+
+    <div class="example_box">
+        <h5>例子2</h5>
+        <p>对 div 元素绑定拖拽，设置拖拽区域，并限制其范围，在 3 次拖拽后销毁实例。</p>
+        <div class="demo_box" style="height:200px;">
+            <div style="padding:30px;width:65px;height:65px;background:#333;" id="box2"><div id="box3" style="width:65px;height:65px;background:#999;line-height:65px;text-align:center;">box3</div></div>  
+        </div>  
+        <p>实例化拖拽组件。</p> 
+        <div class="code_box">
+            <pre class="brush: js;">var count = 0,
+    box2 = $( '#box2' ),
+    parent = box2.parent(),
+    drag2 = new $.ui.Drag( box2, {
+        handle : '#box3',
+        container : parent
+    });
+
+// 绑定拖拽结束的事件
+drag2.on( 'dragend', function(){
+    count++;
+    
+    if( count === 3 ){
+        // 事件处理器中的this始终指向拖拽实例
+        this.destroy();
+    }       
+});</pre>
+        </div>          
+    </div>     
+    
+    <div class="example_box">
+        <h5>例子3</h5>
+        <p>对 div 元素绑定拖拽，设置代理拖拽模式。</p>
+        <div class="demo_box">
+            <div style="width:100px;height:100px;background:#333;line-height:100px;color:#fff;text-align:center;" id="box4">box4</div>   
+        </div>  
+        <p>实例化拖拽组件。</p> 
+        <div class="code_box">
+            <pre class="brush: js;">new $.ui.Drag( '#box4', {
+    proxy : true
+});</pre>
+        </div>          
+    </div> 
+    
+    <div class="example_box">
+        <h5>例子4</h5>
+        <p>对 div 元素绑定拖拽，拖拽结束后不更新其位置。</p>
+        <div class="demo_box">
+            <div style="width:100px;height:100px;background:#333;line-height:100px;color:#fff;text-align:center;" id="box5">box5</div>   
+        </div> 
+        <p>实例化拖拽组件。</p> 
+        <div class="code_box">
+            <pre class="brush: js;">new $.ui.Drag( '#box5', {
+    refresh : false
+});</pre>
+        </div>          
+    </div> 
+    
+    <div class="example_box">
+        <h5>例子5</h5>
+        <p>对 div 元素绑定拖拽，只允许其横向拖拽。</p>
+        <div class="demo_box">
+            <div style="width:100px;height:100px;background:#333;line-height:100px;color:#fff;text-align:center;" id="box6">box6</div>   
+        </div> 
+        <p>实例化拖拽组件。</p> 
+        <div class="code_box">
+            <pre class="brush: js;">new $.ui.Drag( '#box5', {
+    axis : 'x'
+});</pre>
+        </div>          
+    </div> 
+</div>
+
+<script type="text/javascript" src="../base/js/seed-jquery.js"></script>
+<script type="text/javascript" src="../assets/js/shcore.js"></script>
+<script type="text/javascript" src="../assets/js/shbrushjscript.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<script type="text/javascript">
+seed.config({
+    baseUrl : './js/'
+});
+
+
+seed.use( 'drag', function(){
+    var drag1 = new $.ui.Drag( '#box1' );
+        
+        drag1.on( 'dragstart', function( e ){
+                $( e.drag ).css( 'backgroundColor', '#666' );
+            })
+            .on( 'dragend', function( e ){
+                $( e.drag ).css( 'backgroundColor', '#333' );
+            });
+            
+        var count = 0,
+            box2 = $( '#box2' ),
+            parent = box2.parent(),
+            drag2 = new $.ui.Drag( box2, {
+                handle : '#box3',
+                container : parent
+            });
+        
+        drag2.on( 'dragend', function(){
+            count++;
+            
+            if( count === 3 ){
+                this.destroy();
+            }       
+        });     
+        
+        new $.ui.Drag( '#box4', {
+            proxy : true
+        });
+        
+        new $.ui.Drag( '#box5', {
+            refresh : false
+        });
+        
+        new $.ui.Drag( '#box6', {
+            axis : 'x'
+        });    
+});
+
+</script>    
+</body>
+
+</html>

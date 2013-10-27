@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>drop demo</title>
+<link rel="stylesheet" href="../base/css/reset.css" />
+<link rel="stylesheet" href="../assets/css/demo.css" />
+</head>
+<body>
+
+<h1>Drop demo <a href="https://github.com/chenmnkken/ecope/wiki/Drop-%E6%8B%96%E6%94%BE" target="_blank">#view docs</a></h1>
+<hr />
+
+<div class="wrapper">
+    <div class="example_box">
+        <h5>例子1</h5>
+        <p>对 box1、box2 绑定拖拽，box3 绑定拖放，box3 仅接受 box1 的放置，对 box3 绑定相应的事件，让 box1 可以 append 到 box3 中，同时销毁 box1 的拖拽实例。</p>
+        <div class="demo_box">
+            <div style="width:80px;height:80px;background:#333;line-height:80px;color:#fff;text-align:center;" id="box1">box1</div>  
+            <div style="width:80px;height:80px;background:#333;line-height:80px;color:#fff;text-align:center;margin-top:100px;" id="box2">box2</div>  
+            <div style="width:100px;padding:20px;background:#fff;border:1px solid #ccc;color:#333;text-align:center;margin-top:100px;" id="box3">box3</div>  
+        </div>    
+        <div class="code_box">
+        <pre class="brush: js;">var drop = new $.ui.Drop( '#box3', {
+    accept : '#box1'
+});
+
+var drag1 = new $.ui.Drag( '#box1', {
+    refresh : false
+});
+
+new $.ui.Drag( '#box2', {
+    refresh : false
+});
+
+    // 进入
+drop.on( 'dropenter', function( e ){
+        $( e.drop ).css( 'backgroundColor', '#eee' );
+    })
+    // 离开
+    .on( 'dropexit', function( e ){
+        $( e.drop ).css( 'backgroundColor', '#fff' );
+    })
+    // 放置
+    .on( 'drop', function( e ){
+        $( e.drop ).css( 'backgroundColor', '#c2ebfe' )
+            .append( e.drag );
+            
+        drag1.destroy();
+    });</pre>
+        </div>          
+    </div>           
+</div>
+
+
+<script type="text/javascript" src="../base/js/seed-jquery.js"></script>
+<script type="text/javascript" src="../assets/js/shcore.js"></script>
+<script type="text/javascript" src="../assets/js/shbrushjscript.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<script type="text/javascript">
+seed.config({
+    baseUrl : './js/'
+});
+
+
+seed.use( 'drop', function(){
+    var drop = new $.ui.Drop( '#box3', {
+        accept : '#box1'
+    });
+    
+    var drag1 = new $.ui.Drag( '#box1', {
+        refresh : false
+    });
+    
+    new $.ui.Drag( '#box2', {
+        refresh : false
+    });
+    
+    drop.on( 'dropenter', function( e ){
+            $( e.drop ).css( 'backgroundColor', '#eee' );
+        })
+        .on( 'dropexit', function( e ){
+            $( e.drop ).css( 'backgroundColor', '#fff' );
+        })
+        .on( 'drop', function( e ){
+            $( e.drop ).css( 'backgroundColor', '#c2ebfe' )
+                .append( e.drag );
+                
+            drag1.destroy();
+        });
+});
+
+</script>    
+</body>
+
+</html>

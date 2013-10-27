@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Sortable demo</title>
+<link rel="stylesheet" href="../base/css/reset.css" />
+<link rel="stylesheet" href="../assets/css/demo.css" />
+</head>
+<body>
+
+<h1>Sortable demo <a href="https://github.com/chenmnkken/ecope/wiki/Sortable-%E6%8B%96%E5%8A%A8%E6%8E%92%E5%BA%8F" target="_blank">#view docs</a></h1>
+<hr />
+
+<div class="wrapper">
+    <div class="example_box">
+        <h5>例子1</h5>
+        <p>对左右 2 个列表绑定拖放排序，左边(list1)列表的元素可以拖放至右边的列表，右边(list2)列表的元素不能拖放至左边的列表中。</p>
+        <div class="demo_box">
+            <style type="text/css">
+                .list{ border:1px solid #ccc; padding:20px 20px 10px; float:left; margin-right:20px; background:#fff; }
+                .list2{ margin:0; }
+                .list li{ margin-bottom:10px; box-shadow:2px 2px 3px rgba(0, 0, 0, 0.25); width:200px; height:32px; line-height:32px; text-align:center; color:#000; font-size:14px; border:1px solid; }
+                .list .item1{ background:#dfe8f1; border-color:#7b9ec0; }
+                .list .item2{ background:#ecffe8; border-color:#77b868; }
+            </style>
+            <ul id="list1" class="list">
+                <li class="item1">1</li>
+                <li class="item1">2</li>
+                <li class="item1">3</li>
+                <li class="item1">4</li>
+                <li class="item1">5</li>
+                <li class="item1">6</li>
+            </ul>
+
+            <ul id="list2" class="list list2">
+                <li class="item2">A</li>
+                <li class="item2">B</li>
+                <li class="item2">C</li>
+                <li class="item2">D</li>
+                <li class="item2">E</li>
+                <li class="item2">F</li>
+            </ul>                
+        </div>    
+        <div class="code_box">
+        <pre class="brush: js;">var Sortable = $.ui.Sortable;
+    
+new Sortable( '#list1' );
+
+new Sortable( '#list2', {
+    connect : '#list1'
+});</pre>
+        </div>          
+    </div>           
+</div>
+
+<script type="text/javascript" src="../base/js/seed-jquery.js"></script>
+<script type="text/javascript" src="../assets/js/shcore.js"></script>
+<script type="text/javascript" src="../assets/js/shbrushjscript.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<script type="text/javascript">
+seed.config({
+    baseUrl : './js/'
+});
+
+seed.use( 'sortable', function(){
+    var Sortable = $.ui.Sortable;
+    
+    var sortable1 = new Sortable( '#list1' );
+    
+    new Sortable( '#list2', {
+        connect : '#list1'
+    });
+});
+</script>
+</body>
+</html>

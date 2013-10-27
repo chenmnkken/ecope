@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Tab demo</title>
+<link rel="stylesheet" href="../base/css/reset.css" />
+<link rel="stylesheet" href="../assets/css/demo.css" />
+<link rel="stylesheet" href="css/tab_style.css" />
+<style type="text/css">
+.ecope_tab{ width:320px; height:200px; margin:20px auto; background:#fff; }
+.ecope_tab .tab_wrapper{ border:solid #ddd; border-width:0 1px 1px; }
+.ecope_tab .tab_content div{ width:278px; height:129px; padding:20px; }
+.ecope_tab .tab_content p{ line-height:24px; }
+</style>
+</head>
+<body>
+
+<h1>Tab demo <a href="https://github.com/chenmnkken/ecope/wiki/Tab-%E9%80%89%E9%A1%B9%E5%8D%A1" target="_blank">#view docs</a></h1>
+<hr />
+
+<div class="wrapper">
+
+    <div class="example_box">
+        <h5>例子1</h5>
+        <p>创建一个选项卡，使用 mouseenter 来触发切换。</p>
+        <div class="demo_box">
+            <div class="ecope_tab" id="tab1">
+                <ul class="tab_menu">
+                    <li class="current">火星</li>
+                    <li>非洲</li>
+                    <li>酸奶</li>
+                </ul>
+                
+                <div class="tab_wrapper">
+                    <div class="tab_content">
+                        <div class="tab_box">
+                            36年前的打印数据被还原，对它们的最新分析显示美国宇航局（NASA）可能已经在火星上发现了生命。这项研究成果被一个由数学家和科学家组成的国际团队于本周发表。
+                        </div>
+                        <div class="tab_box" style="display:none">
+                            当非洲成为世界上增速最快的经济体之一时，为什么美国媒体仍将非洲描述为“一个无尽凄惨的大陆”？
+                        </div>
+                        <div class="tab_box" style="display:none">
+                            日本研究发现，通过持续摄入含R-1乳酸菌的酸奶，可有效降低中小学生患流感的机率，其机理在于提高了一种杀灭坏细胞的NK细胞的活性，从而降低了病菌感染率。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div class="code_box">
+        <pre class="brush: js;">new $.ui.Tab( '#tab1',{
+    trigger : 'mouseenter'
+});</pre>
+        </div>          
+    </div>     
+
+    <div class="example_box">
+        <h5>例子2</h5>
+        <p>创建一个选项卡，点击的时候横向滑动。</p>
+        <div class="demo_box">
+            <style type="text/css">
+            </style>
+            <div class="ecope_tab" id="tab2">
+                <ul class="tab_menu">
+                    <li class="current">火星</li>
+                    <li>非洲</li>
+                    <li>酸奶</li>
+                </ul>
+                
+                <div class="tab_wrapper">
+                    <div class="tab_content">
+                        <div class="tab_box">
+                            36年前的打印数据被还原，对它们的最新分析显示美国宇航局（NASA）可能已经在火星上发现了生命。这项研究成果被一个由数学家和科学家组成的国际团队于本周发表。
+                        </div>
+                        <div class="tab_box" style="display:none">
+                            当非洲成为世界上增速最快的经济体之一时，为什么美国媒体仍将非洲描述为“一个无尽凄惨的大陆”？
+                        </div>
+                        <div class="tab_box" style="display:none">
+                            日本研究发现，通过持续摄入含R-1乳酸菌的酸奶，可有效降低中小学生患流感的机率，其机理在于提高了一种杀灭坏细胞的NK细胞的活性，从而降低了病菌感染率。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div class="code_box">
+        <pre class="brush: js;">new $.ui.Tab( '#tab2', {
+    effects : 'slideX',
+    easing : 'easeOut'
+});</pre>
+        </div>          
+    </div>  
+
+</div>
+
+<script type="text/javascript" src="../base/js/seed-jquery.js"></script>
+<script type="text/javascript" src="../assets/js/shcore.js"></script>
+<script type="text/javascript" src="../assets/js/shbrushjscript.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<script type="text/javascript">
+seed.config({
+    baseUrl : './js/'
+});
+
+
+seed.use( 'tab', function(){
+    new $.ui.Tab( '#tab1', {
+        trigger : 'mouseenter'
+    });  
+    
+    new $.ui.Tab( '#tab2', {
+        effects : 'slideX'
+    });   
+});
+
+</script> 
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Emaisuggest demo</title>
+<link rel="stylesheet" href="../base/css/reset.css" />
+<link rel="stylesheet" href="../assets/css/demo.css" />
+<link rel="stylesheet" href="css/emailsuggest_style.css" />
+</head>
+<body>
+
+<h1>Emaisuggest demo <a href="https://github.com/chenmnkken/ecope/wiki/EmailSuggest-%E9%82%AE%E7%AE%B1%E6%8F%90%E7%A4%BA" target="_blank">#view docs</a></h1>
+<hr />
+
+<div class="wrapper">
+    <div class="example_box">
+        <h5>例子1</h5>
+        <p>给邮箱输入框创建一个邮箱提示列表。</p>
+        <div class="demo_box">
+            <label for="email">电子邮箱：</label><input type="text" id="email" style="border:1px solid #ddd; padding:3px; height:16px; width:180px;" />
+        </div>    
+        <div class="code_box">
+        <pre class="brush: js;">var arr = [ '163.com', 
+            '126.com', 
+            'qq.com', 
+            'yahoo.com.cn', 
+            'qq1.com', 
+            'gmail.com', 
+            'sohu.com', 
+            'qq2.com', 
+            'hotmail.com' ];
+    
+    new $.ui.EmailSuggest( '#email', {
+        data : arr
+    });</pre>
+        </div>          
+    </div>
+</div>
+
+<script type="text/javascript" src="../base/js/seed-jquery.js"></script>
+<script type="text/javascript" src="../assets/js/shcore.js"></script>
+<script type="text/javascript" src="../assets/js/shbrushjscript.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<script type="text/javascript">
+seed.config({
+    baseUrl : './js/'
+});
+
+seed.use( 'emailsuggest', function(){
+    var arr = [ '163.com', '126.com', 'qq.com', 'yahoo.com.cn', 'qq1.com', 'gmail.com', 'sohu.com', 'qq2.com', 'hotmail.com' ];
+    
+    new $.ui.EmailSuggest( '#email', {
+        data : arr
+    });
+});
+</script>
+
+</body>
+</html>

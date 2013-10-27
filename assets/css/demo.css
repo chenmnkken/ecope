@@ -1,0 +1,130 @@
+@charset "utf-8";
+
+body{ font:14px/24px 'microsoft yahei', arial; color:#333; background:#fff; }
+
+h1{ height:60px; line-height:60px; font-size:36px; padding-left:50px; overflow:hidden; }
+h1 a{ font-size:16px; font-weight:400; color:#06c; text-decoration:underline; font-family:arial; }
+h5{ font-size:14px; font-weight:700; }
+.wrapper{ padding:0 50px 100px; }
+.demo_box{ border-left:2px solid #bbb; width:628px; margin-bottom:20px; background:#f8f8f8; padding:10px 20px; position:relative; } 
+.demo_box:after{ content: ".";display: block;clear: both;visibility: hidden;line-height: 0;height: 0; } 
+.demo_box p{ margin:0; }
+.anim_box{ width:670px; height:100px; position:relative; padding-bottom:20px; }
+.anim_box div{ width:100px; height:100px; background:#2c2c2c; position:absolute; line-height:100px; border:0px solid #028fc4; font-size:32px; color:#fff; text-align:center; overflow:hidden; font-family:"Lucida Sans Unicode",​"Lucida Grande",​sans-serif; }
+
+.console_box{ width:662px; border:4px solid #f5f5f5; min-height:60px; height:auto; _height:60px; padding:10px 0; }
+.console_box li{ width:632px; margin:0 auto; padding:0 5px; height:29px; line-height:29px; border-bottom:1px solid #e5e5e5; font-family:arial; }
+
+.example_box{ margin-top:30px; padding-bottom:30px; border-bottom:1px solid #ccc; }
+.example_box h5{ margin-bottom:10px; }
+.example_box h6{ font-size:12px; line-height:30px; margin-top:5px; }
+.example_box p{ font-size:13px; color:#666; margin-bottom:10px; width:670px; overflow:hidden; }
+.example_box .btn{ padding:0 18px; height:20px; line-height:20px; background:#eaeaea; font-family:"Microsoft yahei",arial; font-size:12px; outline:none; color:#333; text-decoration:none; border:1px solid #acacac; float:left; }
+.example_box .btn:hover{ background:#e0effc; text-decoration:none; }
+.example_box .long_btn{ width:120px; }
+
+/* 代码高亮 */
+.syntaxhighlighter {
+  overflow:auto;
+  background-color: white !important;
+  margin-bottom:20px;
+}
+
+.syntaxhighlighter .code .line{ white-space:nowrap; }
+
+.syntaxhighlighter .code .line.alt1 {
+  padding:0 10px!important;
+}
+.syntaxhighlighter .code .line.alt2 {
+  padding:0 10px!important;  
+  background-color: white !important;
+}
+.syntaxhighlighter .line.highlighted.alt1, .syntaxhighlighter .line.highlighted.alt2 {
+  background-color: #fff !important;
+}
+.syntaxhighlighter .line.highlighted.number {
+  color: black !important;
+}
+.syntaxhighlighter table caption {
+  color: black !important;
+}
+.syntaxhighlighter .gutter {
+  color: #afafaf !important;
+}
+.syntaxhighlighter .gutter .line {
+  padding:1px 7px;  
+  *padding:0px 7px;
+  font-size: 12px !important;
+  border-right: 3px solid #46ca3b !important;
+  height: 24px; 
+  line-height: 24px; 
+  font-family:"Consolas","Bitstream Vera Sans Mono","Courier New",Courier,monospace;
+}
+.syntaxhighlighter .gutter .line.highlighted {
+  background-color: #46ca3b !important;
+  color: white !important;
+}
+.syntaxhighlighter.printing .line .content {
+  border: none !important;
+}
+.syntaxhighlighter.collapsed {
+  overflow: visible !important;
+}
+.syntaxhighlighter.collapsed .toolbar,
+.syntaxhighlighter .toolbar {
+  display:none;
+}
+
+.syntaxhighlighter .plain, .syntaxhighlighter .plain a {
+  color: black !important;
+  font-family:"Consolas","Bitstream Vera Sans Mono","Courier New",Courier,monospace; font-size: 13px; line-height: 24px; 
+}
+.syntaxhighlighter .comments, .syntaxhighlighter .comments a {
+  color: #008200 !important;
+  font-size: 13px; line-height: 24px; 
+}
+.syntaxhighlighter .string, .syntaxhighlighter .string a {
+  font-family:"Consolas","Bitstream Vera Sans Mono","Courier New",Courier,monospace; font-size: 13px; line-height: 24px; 
+  color: #ff0080 !important;
+}
+.syntaxhighlighter .spaces{ height:24px; }
+.syntaxhighlighter .keyword {
+  font-family:"Consolas","Bitstream Vera Sans Mono","Courier New",Courier,monospace; font-size: 13px; line-height: 24px; 
+  color: blue !important;
+  font-style:italic;
+}
+.syntaxhighlighter .preprocessor {
+  color: gray !important;
+}
+.syntaxhighlighter .variable {
+  color: #aa7700 !important;
+}
+.syntaxhighlighter .value {
+  color: #009900 !important;
+}
+.syntaxhighlighter .functions {
+  color: #ff1493 !important;
+}
+.syntaxhighlighter .constants {
+  color: #0066cc !important;
+}
+.syntaxhighlighter .script {
+  font-weight: bold !important;
+  color: #006699 !important;
+  background-color: none !important;
+}
+.syntaxhighlighter .color1, .syntaxhighlighter .color1 a {
+  color: gray !important;
+}
+.syntaxhighlighter .color2, .syntaxhighlighter .color2 a {
+  color: #ff1493 !important;
+}
+.syntaxhighlighter .color3, .syntaxhighlighter .color3 a {
+  color: red !important;
+}
+
+.syntaxhighlighter .keyword {
+  font-weight: bold !important;
+}
+ 
+

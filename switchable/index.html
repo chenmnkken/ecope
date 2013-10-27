@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>swichable demo</title>
+<link rel="stylesheet" href="../base/css/reset.css" />
+<link rel="stylesheet" href="../assets/css/demo.css" />
+<link rel="stylesheet" href="css/switchable_style.css" />
+<style type="text/css">
+.ecope_switchable{ margin-bottom:20px; }
+</style>
+</head>
+<body>
+
+<h1>Swtichable demo <a href="https://github.com/chenmnkken/ecope/wiki/Switchable-%E8%BD%AE%E6%92%AD(%E5%B9%BB%E7%81%AF%E7%89%87)" target="_blank">#view docs</a></h1>
+<hr />
+
+<div class="wrapper">
+    <div class="example_box">
+        <h5>例子1</h5>
+        <p>创建一个普通的图片轮播组件。</p>
+
+        <div id="switchable1" class="ecope_switchable">
+            <div class="sc_container">
+                <ul>
+                    <li><a href="#"><img src="images/001.jpg" /></a></li>
+                    <li><a href="#"><img src="images/002.jpg" /></a></li>
+                    <li><a href="#"><img src="images/003.jpg" /></a></li>
+                    <li><a href="#"><img src="images/004.jpg" /></a></li>
+                </ul>
+            </div>
+        </div>
+  
+        <div class="code_box">
+            <pre class="brush: js;">new $.ui.Switchable( '#switchable1' );</pre>
+        </div>           
+    </div>      
+
+    <div class="example_box">
+        <h5>例子2</h5>
+        <p>创建图片横向滑动的轮播组件，并自定义切换按钮，如果该按钮是组件生成的，在默认状态下是隐藏的，仅在鼠标 hover 时才会显示。并设置两个按钮用来控制暂停和继续。</p>
+
+        <div id="switchable2" class="ecope_switchable">
+            <div class="sc_container">
+                <ul>
+                    <li><a href="#"><img src="images/001.jpg" /></a></li>
+                    <li><a href="#"><img src="images/002.jpg" /></a></li>
+                    <li><a href="#"><img src="images/003.jpg" /></a></li>
+                    <li><a href="#"><img src="images/004.jpg" /></a></li>
+                </ul>
+            </div>
+            <a href="#" class="sc_prev">Previous</a>
+            <a href="#" class="sc_next">Next</a>
+        </div>
+  
+        <p><a href="javascript:;" id="runDemo1" class="btn">暂停</a><a href="javascript:;" id="runDemo2" class="btn">继续</a></p>   
+        
+        <div class="code_box">
+        <pre class="brush: js;">var sc = new $.ui.Switchable( '#switchable2', {
+    effects : 'slideX',
+    nav : false, 
+    interval : 5000
+});
+
+$( '#runDemo1' ).on( 'click', function(){
+    sc.pause();
+});
+
+$( '#runDemo2' ).on( 'click', function(){
+    sc.play();
+});</pre>
+        </div>                     
+    </div>        
+    
+    <div class="example_box">
+        <h5>例子3</h5>
+        <p>创建图片纵向滑动的轮播组件，并设置图片延迟加载，从第三组开始设置，组件在页面初始化时会默认加载前两组，当切换到第二组时会预加载第三组的图片，依次类推。</p>
+        <p>延迟加载的图片将真实的地址通过 data-lazysrc 存放在 img 标签上。</p>
+        <div class="code_box">
+            <pre class="brush: js;">&lt;img src="placeholder.png" data-lazysrc="001.jpg" alt="" /&gt;</pre>
+        </div>   
+        <p>src 是用来存放占位图片的地址，占位图片必须要有，不能为空。data-lazysrc 就是存放真实的图片地址。</p>
+            
+        <div id="switchable3" class="ecope_switchable">
+            <div class="sc_container">
+                <ul>
+                    <li><a href="#"><img src="images/001.jpg" /></a></li>
+                    <li><a href="#"><img src="images/002.jpg" /></a></li>
+                    <li><a href="#"><img src="../base/images/placeholder.png" alt=""  data-lazysrc="images/003.jpg" /></a></li>
+                    <li><a href="#"><img src="../base/images/placeholder.png" alt=""  data-lazysrc="images/004.jpg" /></a></li>
+                </ul>
+            </div>
+        </div>
+  
+        <div class="code_box">
+        <pre class="brush: js;">new $.ui.Switchable( '#switchable3', {
+    effects : 'slideY',
+    imglazyload : true, // 开启图片延迟加载
+    interval : 4000
+});</pre>
+        </div>          
+    </div>      
+</div>
+
+<script type="text/javascript" src="../base/js/seed-jquery.js"></script>
+<script type="text/javascript" src="../assets/js/shcore.js"></script>
+<script type="text/javascript" src="../assets/js/shbrushjscript.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<script type="text/javascript">
+seed.config({
+    baseUrl : './js/'
+});
+
+seed.use( 'switchable', function(){
+    sc = new $.ui.Switchable( '#switchable1' );  
+        
+    var sc = new $.ui.Switchable( '#switchable2', {
+        effects : 'slideX',
+        nav : false, 
+        interval : 5000
+    });
+
+    $( '#runDemo1' ).on( 'click', function(){
+        sc.pause();
+    });
+
+    $( '#runDemo2' ).on( 'click', function(){
+        sc.play();
+    });       
+    
+    new $.ui.Switchable( '#switchable3', {
+        effects : 'slideY',
+        imglazyload : true,
+        interval : 4000
+    });
+});
+</script>
+</body>
+</html>
