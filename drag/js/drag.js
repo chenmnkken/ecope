@@ -5,7 +5,7 @@
 * Released under the MIT Licenses
 *
 * Mail : chenmnkken@gmail.com
-* Date : 2013-10-27
+* Date : 2013-10-28
 */
 define(function(){
 
@@ -26,6 +26,75 @@ var isIE = $.browser.msie && parseInt( $.browser.version ) < 9,
 
     easyDrag = {
     
+        /*
+         * 首字母大写转换
+         * @param { String } 要转换的字符串
+         * @return { String } 转换后的字符串 top => Top
+         */    
+        capitalize : function( str ){
+            var firstStr = str.charAt(0);
+            return firstStr.toUpperCase() + str.replace( firstStr, '' );
+        },
+    
+        /*    
+         * 获取元素在设置了position后其精确的定位值
+         * @param { jQuery Object } 
+         * @return { String } 定位的属性名
+         */        
+        getPosition : function( elem, name ){
+            var posType = elem.css( 'position' );
+            
+            // static
+            if( posType === 'static' ){
+                return 'auto';
+            }
+            
+            // relative
+            if( posType === 'relative' ){
+                return '0px';
+            }
+            
+            var posName = posParams[ name ][0],
+                upName = easyDrag.capitalize( posName ),
+                offset = elem.offset()[ posName ],        
+                isSub = name === 'right' || name === 'bottom',
+                borderWidth = 0,
+                offsetParent, parent, parentOffset, posSize;
+                
+            if( posType === 'absolute' ){
+                offsetParent = elem[0].offsetParent;
+                
+                if( offsetParent.tagName === 'BODY' || offsetParent.tagName === 'HTML' ){                
+                    offsetParent = window;
+                }
+                
+                parent = $( offsetParent );
+                
+                if( !$.isWindow(offsetParent) ){
+                    borderWidth = parseFloat( getStyle(parent[0], 'border' + upName + 'Width') );
+                }
+                
+                parentOffset = parent.offset()[ posName ] + borderWidth; 
+            }
+            // fixed
+            else{
+                parent = $( window );
+                parentOffset = parent[ 'scroll' + upName ]();
+            }
+
+            offset -= parentOffset; 
+            
+            // right = offsetParent.innerWidth - self.outerWidth - left 
+            // bottom = offsetParent.innerWidth - self.outerWidth - top 
+            if( isSub ){            
+                posSize = posParams[ name ][1];
+                return parent[ 'inner' + posSize ]() - elem[ 'outer' + posSize ]() - offset + 'px';
+            }
+
+            // top、left
+            return offset + 'px';       
+        },    
+    
         /*    
          * 获取拖拽元素相对于包含元素的上下左右的边界值
          * 如果拖拽元素是fixed定位，则其包含元素自动设置成当前窗口
@@ -41,7 +110,17 @@ var isIE = $.browser.msie && parseInt( $.browser.version ) < 9,
                 borderLeftWidth = 0,
                 cOffset = container.offset(),               
                 tOffset = target.offset(),
+                tTop = target.css( 'top' ),
+                tLeft = target.css( 'left' ),
                 cOffsetTop, cOffsetLeft;
+                
+            if( tTop === 'auto' ){
+                tTop = easyDrag.getPosition( target, 'top' );
+            }
+            
+            if( tLeft === 'auto' ){
+                tLeft = easyDrag.getPosition( target, 'left' );
+            }
 
             if( isWindow ){
                 cOffsetTop = container.scrollTop();
@@ -54,12 +133,12 @@ var isIE = $.browser.msie && parseInt( $.browser.version ) < 9,
                 borderRightWidth = parseFloat( container.css('borderRightWidth') );
                 borderBottomWidth = parseFloat( container.css('borderBottomWidth') );
                 borderLeftWidth = parseFloat( container.css('borderLeftWidth') );
-            }
+            }      
             
             // 绝对距离+相对位置就是边界的位置
-            cOffsetTop = cOffsetTop - tOffset.top + parseFloat( target.css('top') );
-            cOffsetLeft = cOffsetLeft - tOffset.left + parseFloat( target.css('left') );
-                
+            cOffsetTop = cOffsetTop - tOffset.top + parseFloat( tTop );
+            cOffsetLeft = cOffsetLeft - tOffset.left + parseFloat( tLeft );
+ 
             return {    
                 top : cOffsetTop + borderTopWidth,
                 right : cOffsetLeft + container.outerWidth() - target.outerWidth() - borderRightWidth,
@@ -79,6 +158,14 @@ var isIE = $.browser.msie && parseInt( $.browser.version ) < 9,
                 tOffset = target.offset(),
                 top = target.css( 'top' ),
                 left = target.css( 'left' );
+                
+            if( top === 'auto' ){
+                top = easyDrag.getPosition( target, 'top' );
+            }
+            
+            if( left === 'auto' ){
+                left = easyDrag.getPosition( target, 'left' );
+            }
             
             // 绝对距离+相对位置就是目标元素的位置    
             target.animate({                
@@ -103,7 +190,7 @@ var isIE = $.browser.msie && parseInt( $.browser.version ) < 9,
             }
             
             if( !proxyElem ){
-                proxyElem = $( '<div class="jcope_drag_proxy" style="position:absolute;' +
+                proxyElem = $( '<div class="ecope_drag_proxy" style="position:absolute;' +
                     'border:2px dashed #a0a1a2;"/>' );
             }
 
@@ -120,7 +207,7 @@ var isIE = $.browser.msie && parseInt( $.browser.version ) < 9,
         }
     
     };
-
+    
 var Drag = function( target, options ){
     target = $( target ).eq( 0 );
     options = options || {};
@@ -195,6 +282,14 @@ var Drag = function( target, options ){
             left = newTarget.css( 'left' );
             top = newTarget.css( 'top' );         
             offset = newTarget.offset();
+            
+            if( top === 'auto' ){
+                top = easyDrag.getPosition( target, 'top' );
+            }
+            
+            if( left === 'auto' ){
+                left = easyDrag.getPosition( target, 'left' );
+            }
             
             if( !refresh ){
                 originalPosition = {
@@ -316,7 +411,7 @@ var Drag = function( target, options ){
             // 失焦后如果drop是边界接触模式就可能判断出错，
             // 所以在失焦后不做drop接触的判断
             // 同时要区分是否为代理元素
-            if( $.ui.Drop && (e.target === originHandle[0] || e.target.className === 'jcope_drag_proxy') ){
+            if( $.ui.Drop && (e.target === originHandle[0] || e.target.className === 'ecope_drag_proxy') ){
                 $.ui.Drop.fire( o, e, true );
             }
             e.stopPropagation();      
