@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>LikeScrollbar demo</title>
+<link rel="stylesheet" href="../base/css/reset.css" />
+<link rel="stylesheet" href="../assets/css/demo.css" />
+<link rel="stylesheet" href="css/likescrollbar_style.css" />
+<style type="text/css">
+.likescrollbar_box1{ width:180px; height:120px; padding:0 30px 0 20px; border:1px solid #ddd; box-shadow:0 1px 1px rgba(0, 0, 0, 0.1); overflow:hidden; background:#fff; }
+.likescrollbar_box1 p{ padding:10px 0; overflow:visible; width:auto; margin:0; }
+.likescrollbar_box2{ width:180px; height:120px; border:1px solid #ddd; box-shadow:0 1px 1px rgba(0, 0, 0, 0.1); overflow:hidden; background:#fff; padding-bottom:20px; }
+.likescrollbar_box2 p{ height:120px; width:400px; overflow:hidden; margin:0; padding:10px; }
+</style>
+</head>
+<body>
+	
+<h1>LikeScrollbar demo <a href="https://github.com/chenmnkken/ecope/wiki/LikeScrollbar-%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A8%A1%E6%8B%9F" target="_blank">#view docs</a></h1>
+<hr />
+
+<div class="wrapper">
+
+    <div class="example_box">
+        <h5>例子1</h5>
+        <p>为 div 添加一个竖式的模拟滚动条。</p>
+        <div class="demo_box">
+            <div class="likescrollbar_box1" id="likescrollbarBox1">        
+                <p>1. 将目标图片进行特征提取，描述图像的算法很多，用的比较多的是：SIFT描述子，指纹算法函数，bundling features算法，hash function（散列函数）等。也可以根据不同的图像，设计不同的算法，比如图像局部N阶矩的方法提取图像特征。<br />
+2. 将图像特征信息进行编码，并将海量图像编码做查找表。对于目标图像，可以对分辨率较大的图像进行降采样，减少运算量后在进行图像特征提取和编码处理。
+                </p>
+            </div>  
+        </div>    
+        <div class="code_box">
+        <pre class="brush: js;">new $.ui.LikeScrollbar( '#likescrollbarBox1',{
+    top : 1
+});</pre>
+        </div>          
+    </div>  
+    
+    <div class="example_box">
+        <h5>例子2</h5>
+        <p>为 div 添加一个横向的模拟滚动条。</p>
+        <div class="demo_box">
+            <div class="likescrollbar_box2" id="likescrollbarBox2">        
+                <p>1. 将目标图片进行特征提取，描述图像的算法很多，用的比较多的是：SIFT描述子，指纹算法函数，bundling features算法，hash function（散列函数）等。也可以根据不同的图像，设计不同的算法，比如图像局部N阶矩的方法提取图像特征。
+                </p>
+            </div>  
+        </div>    
+        <div class="code_box">
+        <pre class="brush: js;">new $.ui.LikeScrollbar( '#likescrollbarBox2',{
+    left : 1,
+    axis : 'x'
+});</pre>
+        </div>          
+    </div>      
+ 
+</div>
+
+<script type="text/javascript" src="../base/js/seed-jquery.js"></script>
+<script type="text/javascript">
+seed.config({
+    baseUrl : './js/'
+});
+
+seed.use( 'likescrollbar', function(){
+    
+    new $.ui.LikeScrollbar( '#likescrollbarBox1',{
+        top : 1
+    });
+    
+    new $.ui.LikeScrollbar( '#likescrollbarBox2',{
+        left : 1,
+        axis : 'x'
+    });
+
+});
+
+</script>
+    
+</body>
+</html>

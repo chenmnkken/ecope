@@ -22,6 +22,7 @@ h5{ font-size:14px; font-weight:700; }
 .example_box .btn{ padding:0 18px; height:20px; line-height:20px; background:#eaeaea; font-family:"Microsoft yahei",arial; font-size:12px; outline:none; color:#333; text-decoration:none; border:1px solid #acacac; float:left; }
 .example_box .btn:hover{ background:#e0effc; text-decoration:none; }
 .example_box .long_btn{ width:120px; }
+.example_box .code_box pre{ font-family:"Consolas","Bitstream Vera Sans Mono","Courier New",Courier,monospace; font-size:12px; }
 
 /* 代码高亮 */
 .syntaxhighlighter {
