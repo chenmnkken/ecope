@@ -136,7 +136,7 @@ define(['../../drag/js/drag'], function(){
                 continue;
             }
             
-            if( drop.mode !== 'pointer' ){
+            if( drop.mode !== 'pointer' ){                
                 drag.top -= e.offsetY;
                 drag.left -= e.offsetX;
                 drag.right = drag.left + o.width;

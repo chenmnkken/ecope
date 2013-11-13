@@ -5,7 +5,7 @@
 * Released under the MIT Licenses
 *
 * Mail : chenmnkken@gmail.com
-* Date : 2013-10-28
+* Date : 2013-11-13
 */
 define(function(){
 
@@ -362,11 +362,18 @@ var Drag = function( target, options ){
             
             var currentX = e.pageX,
                 currentY = e.pageY,
+                offsetX = e.offsetX,
+                offsetY = e.offsetY,
                 style = proxy ? proxyElem[0].style : target[0].style,
-                x, y, left, right, top, bottom;
+                x, y, left, right, top, bottom, offset;
             
             clearSelect();
             isMove = true;
+            
+            if( offsetX === undefined ){
+                offsetX = e.originalEvent.layerX;
+                offsetY = e.originalEvent.layerY;
+            }
             
             // 横向    
             if( originalX ){
@@ -379,11 +386,11 @@ var Drag = function( target, options ){
                     x = x < left ? left : 
                         x > right ? right :
                         x;
-                }    
+                }
 
-                drag.left = x;
-                drag.offsetLeft = currentX - e.offsetX;
                 style.left = x + 'px';
+                drag.left = x;   
+                drag.offsetLeft = currentX - offsetX;
             }
             
             // 纵向
@@ -398,10 +405,10 @@ var Drag = function( target, options ){
                         y > bottom ? bottom :
                         y;
                 }    
-                
-                drag.top = y;
-                drag.offsetTop = currentY - e.offsetY;
+
                 style.top = y + 'px';
+                drag.top = y;
+                drag.offsetTop = currentY - offsetY;
             }
 
             // 触发drag实例的drag事件
@@ -419,6 +426,11 @@ var Drag = function( target, options ){
         
         // 鼠标弹起
         up = function( e ){
+            if( e.offsetX === undefined ){
+                e.offsetX = e.originalEvent.layerX;
+                e.offsetY = e.originalEvent.layerY;
+            }
+        
             o.isDown = false;
             if( isIE ){
                 handle.off( 'losecapture.drag' );
@@ -504,7 +516,7 @@ Drag.prototype = {
             
         // 有可能出现在拖拽过程中的卸载，此时强制触发mouseup事件    
         if( o.isDown ){    
-            o.handle.fire( 'mouseup' );
+            o.handle.trigger( 'mouseup' );
         }
             
         o.target.off( 'likedrag' );        
