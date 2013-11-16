@@ -5,7 +5,7 @@
 * Released under the MIT Licenses
 *
 * Mail : chenmnkken@gmail.com
-* Date : 2013-10-27
+* Date : 2013-11-16
 */
 
 define( [ '../../drag/js/drag' ], function(){
@@ -713,8 +713,14 @@ Dialog.prototype = {
             this.close();
         }
         
+        if( o.elem ){
+            o.elem.hide();
+            $body.append( o.elem );
+        }        
+        
         overlayElem.remove();
         dialogElem.remove();
+        overlayElem = dialogElem = null;
         
         o.target.off( o.trigger + '.dialog likeopen likeclose' );
         delete this.__o__;
