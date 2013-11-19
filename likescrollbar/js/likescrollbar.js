@@ -5,7 +5,7 @@
 * Released under the MIT Licenses
 *
 * Mail : chenmnkken@gmail.com
-* Date : 2013-10-30
+* Date : 2013-11-19
 */
 
 define(['../../drag/js/drag'], function(){
@@ -115,7 +115,7 @@ var easyScrollbar = {
                 SCROLL = isY ? 'scrollTop' : 'scrollLeft',
                 posName = isY ? 'top' : 'left',
                 pos = parseInt( thumbElem.css(posName) ),
-                distance = 18;
+                distance = 15;
         
             if( e.wheelDelta < 0 ){
                 pos += distance;
