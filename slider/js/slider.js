@@ -4,6 +4,7 @@
 * Copyright (c) 2013 Yiguo Chan
 * Released under the MIT Licenses
 *
+* Docs : https://github.com/chenmnkken/ecope/wiki/Slider-%E6%BB%91%E5%8A%A8%E6%9D%A1
 * Mail : chenmnkken@gmail.com
 * Date : 2013-10-27
 */

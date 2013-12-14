@@ -4,6 +4,7 @@
 * Copyright (c) 2013 Yiguo Chan
 * Released under the MIT Licenses
 *
+* Docs : https://github.com/chenmnkken/ecope/wiki/LikeScrollbar-%E6%BB%9A%E5%8A%A8%E6%9D%A1%E6%A8%A1%E6%8B%9F
 * Mail : chenmnkken@gmail.com
 * Date : 2013-11-19
 */

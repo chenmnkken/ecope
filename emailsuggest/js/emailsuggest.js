@@ -4,6 +4,7 @@
 * Copyright (c) 2013 Yiguo Chan
 * Released under the MIT Licenses
 *
+* Docs : https://github.com/chenmnkken/ecope/wiki/EmailSuggest-%E9%82%AE%E7%AE%B1%E6%8F%90%E7%A4%BA
 * Mail : chenmnkken@gmail.com
 * Date : 2013-10-27
 */

@@ -4,6 +4,7 @@
 * Copyright (c) 2013 Yiguo Chan
 * Released under the MIT Licenses
 *
+* Docs : https://github.com/chenmnkken/ecope/wiki/Drag-%E6%8B%96%E6%8B%BD
 * Mail : chenmnkken@gmail.com
 * Date : 2013-11-13
 */

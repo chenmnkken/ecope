@@ -4,6 +4,7 @@
 * Copyright (c) 2013 Yiguo Chan
 * Released under the MIT Licenses
 *
+* Docs : https://github.com/chenmnkken/ecope/wiki/Switchable-%E8%BD%AE%E6%92%AD(%E5%B9%BB%E7%81%AF%E7%89%87)
 * Mail : chenmnkken@gmail.com
 * Date : 2013-10-27
 */

@@ -4,6 +4,7 @@
 * Copyright (c) 2013 Yiguo Chan
 * Released under the MIT Licenses
 *
+* Docs : https://github.com/chenmnkken/ecope/wiki/Tab-%E9%80%89%E9%A1%B9%E5%8D%A1
 * Mail : chenmnkken@gmail.com
 * Date : 2013-10-27
 */

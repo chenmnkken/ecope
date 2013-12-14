@@ -4,6 +4,7 @@
 * Copyright (c) 2013 Yiguo Chan
 * Released under the MIT Licenses
 *
+* Docs : https://github.com/chenmnkken/ecope/wiki/Sortable-%E6%8B%96%E5%8A%A8%E6%8E%92%E5%BA%8F
 * Mail : chenmnkken@gmail.com
 * Date : 2013-10-27
 */

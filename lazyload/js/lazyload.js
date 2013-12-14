@@ -4,6 +4,7 @@
 * Copyright (c) 2013 Yiguo Chan
 * Released under the MIT Licenses
 *
+* Docs : https://github.com/chenmnkken/ecope/wiki/Lazyload-%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD
 * Mail : chenmnkken@gmail.com
 * Date : 2013-10-27
 */

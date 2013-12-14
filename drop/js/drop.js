@@ -4,6 +4,7 @@
 * Copyright (c) 2013 Yiguo Chan
 * Released under the MIT Licenses
 *
+* Docs : https://github.com/chenmnkken/ecope/wiki/Drop-%E6%8B%96%E6%94%BE
 * Mail : chenmnkken@gmail.com
 * Date : 2013-10-27
 */
