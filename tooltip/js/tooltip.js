@@ -5,7 +5,7 @@
 * Released under the MIT Licenses
 *
 * Mail : chenmnkken@gmail.com
-* Date : 2013-10-27 
+* Date : 2013-12-14 
 */
 define(function(){
 
@@ -286,7 +286,7 @@ easyTooltip.patterns = {
         
         hide : function( o ){
             o.tipElem.fadeOut( o.duration, o.easing, function(){
-                o.tipElem.remove( o );
+                o.tipElem.remove();
                 delete o.tipElem;
                 isVisible = false;
             });            
