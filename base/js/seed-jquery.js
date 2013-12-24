@@ -1,14 +1,15 @@
-// seed v1.1.1 + jQuery v1.8.3
+// seed v1.1.2 + jQuery v1.8.3
 
 /*
-* seed v1.1.1
+* seed v1.1.2
 * AMD module loader
 *
 * Copyright (c) 2013 Yiguo Chan
 * Released under the MIT Licenses
 *
+* Gighub : https://github.com/chenmnkken/seed.git
 * Mail : chenmnkken@gmail.com
-* Date : 2013-10-23
+* Date : 2013-11-21
 */
 (function( window, undefined ){
 
@@ -67,10 +68,14 @@ var seed = function(){
                 scripts = document.getElementsByTagName( 'script' );            
                 script = scripts[ scripts.length - 1 ];
             }           
-
+            
             initMod = script.getAttribute( 'data-main' );
             initBaseUrl = script.getAttribute( 'data-baseurl' );            
-            url = script.hasAttribute ? script.src : script.getAttribute( 'src', 4 );        
+            url = script.hasAttribute ? script.src : script.getAttribute( 'src', 4 );      
+            
+            // 如果seed是通过script标签inline添加到页面中其baseUrl就是当前页面的路径
+            url = url || window.location.href;
+
             moduleOptions.baseUrl = initBaseUrl ? 
                 easyModule.mergePath( initBaseUrl, window.location.href ) : 
                 url.slice( 0, url.lastIndexOf('/') + 1 );
@@ -80,7 +85,7 @@ var seed = function(){
                 initMod = initMod.split( ',' );
                 seedExports.use( initMod );
             }
-            
+
             scripts = script = null;
         },
         
@@ -447,7 +452,7 @@ var seed = function(){
     
     var seedExports = {
     
-        version : '1.1.1',
+        version : '1.1.2',
         
         module : {},
     
@@ -733,7 +738,6 @@ window.seed = seed();
  *
  * Date: Tue Nov 13 2012 08:20:33 GMT-0500 (Eastern Standard Time)
  */
- 
 (function( window, undefined ) {
 var
 	// A central reference to the root jQuery(document)

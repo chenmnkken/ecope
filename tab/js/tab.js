@@ -173,7 +173,7 @@ $.each({
             currentMenu = menuElem.filter( '.current' ),
             currentIndex = parseInt( currentMenu.attr('data-index') ),
             contentSize = parseInt( contentElem.css(sizeType) ),
-            posVal = parseInt( contentElem.css(posName) ),
+            posVal = parseInt( contentElem.position()[posName] ),
             multiple = 1,
             animMap = {},            
             isReverse = false,

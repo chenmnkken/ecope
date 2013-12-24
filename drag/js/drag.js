@@ -6,7 +6,7 @@
 *
 * Docs : https://github.com/chenmnkken/ecope/wiki/Drag-%E6%8B%96%E6%8B%BD
 * Mail : chenmnkken@gmail.com
-* Date : 2013-11-13
+* Date : 2013-12-24
 */
 define(function(){
 
@@ -130,16 +130,37 @@ var isIE = $.browser.msie && parseInt( $.browser.version ) < 9,
             else{
                 cOffsetTop = cOffset.top;
                 cOffsetLeft = cOffset.left; 
-                borderTopWidth = parseFloat( container.css('borderTopWidth') );
-                borderRightWidth = parseFloat( container.css('borderRightWidth') );
-                borderBottomWidth = parseFloat( container.css('borderBottomWidth') );
-                borderLeftWidth = parseFloat( container.css('borderLeftWidth') );
+                borderTopWidth = container.css( 'borderTopWidth' );
+                borderRightWidth = container.css( 'borderRightWidth' );
+                borderBottomWidth = container.css( 'borderBottomWidth' );
+                borderLeftWidth = container.css( 'borderLeftWidth' );
+
+                if( borderTopWidth === 'medium' ){
+                    borderTopWidth = '0px';
+                }
+                
+                if( borderRightWidth === 'medium' ){
+                    borderRightWidth = '0px';
+                }
+                
+                if( borderBottomWidth === 'medium' ){
+                    borderBottomWidth = '0px';
+                }
+
+                if( borderLeftWidth === 'medium' ){
+                    borderLeftWidth = '0px';
+                }
+                
+                borderTopWidth = parseFloat( borderTopWidth );
+                borderRightWidth = parseFloat( borderRightWidth );
+                borderBottomWidth = parseFloat( borderBottomWidth );
+                borderLeftWidth = parseFloat( borderLeftWidth );
             }      
             
             // 绝对距离+相对位置就是边界的位置
             cOffsetTop = cOffsetTop - tOffset.top + parseFloat( tTop );
             cOffsetLeft = cOffsetLeft - tOffset.left + parseFloat( tLeft );
- 
+              
             return {    
                 top : cOffsetTop + borderTopWidth,
                 right : cOffsetLeft + container.outerWidth() - target.outerWidth() - borderRightWidth,
