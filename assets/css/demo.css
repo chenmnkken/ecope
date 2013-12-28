@@ -2,6 +2,7 @@
 
 body{ font:14px/24px 'microsoft yahei', arial; color:#333; background:#fff; }
 
+img{ vertical-align:bottom; }
 h1{ height:60px; line-height:60px; font-size:36px; padding-left:50px; overflow:hidden; }
 h1 a{ font-size:16px; font-weight:400; color:#06c; text-decoration:underline; font-family:arial; }
 h5{ font-size:14px; font-weight:700; }

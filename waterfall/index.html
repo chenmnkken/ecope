@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>Waterfall( Fixed Width ) demo</title>
+<link rel="stylesheet" href="../base/css/reset.css" />
+<link rel="stylesheet" href="../assets/css/demo.css" />
+<link rel="stylesheet" href="css/waterfall_style.css" />
+<style type="text/css">
+#waterfall{ margin:20px auto 0; }
+</style>
+</head>
+<body>
+
+<h1>Waterfall( Fixed Width ) demo <a href="https://github.com/chenmnkken/ecope/wiki/Waterfall-%E7%AD%89%E5%AE%BD%E7%80%91%E5%B8%83%E6%B5%81" target="_blank">#view docs</a>&nbsp;<a href="http://stylechen.com/waterfall.html" target="_blank">#view blog</a></h1>
+<hr />
+
+<div class="wrapper">
+    <div class="example_box">
+        <h5>例子1</h5>
+        <p>使用页面中的JSON数据来配置等宽瀑布流。</p>
+        <div class="code_box">
+        <pre class="brush: js;">
+		// 直接使用存放在页面中的静态JSON数据
+		var loadData = function(){
+			// window.initData存放的就是初始化时直接输出到页面中的JSON数据
+			return window.initData;
+		},
+		
+		// 如果是动态数据则应该返回一个 Promise 实例
+		/*		
+		var sn = 0; // 取数据的索引值		
+		var loadData = function(){
+			return $.ajax({
+				url : 'http://example.com?xx=xxx&sn=' + sn,
+				type : 'get',
+				dataType : 'json',
+				success : function(){
+				    // 修改sn的值，取下一组数据
+				}
+			});
+		},
+		
+		// 如果数据格式是其他格式，可以通过serialize来格式化数据		
+		serialize = function( data ){
+			var len = data.length,
+				arr = [],
+				i = 0,
+				item;
+				
+			for( ; i < len; i++ ){
+				item = data[i];
+				arr.push({
+					width : item.imgHidth,
+					height : item.imgHeight,
+					imgurl : item.imgurl
+				});
+			}
+			
+			return arr;
+		},		
+		*/
+		
+		// 创建瀑布流的单元格的HTML字符串，该HTML字符串必须包含在一对li标签中
+		createCell = function( data ){
+			return '&lt;li' + ( data.height > 800 ? ' style="height:800px;"' : '' ) + '&gt;' +
+				'&lt;img src="' + data.imgurl + '" width="' + data.width + '" height="' + data.height + '" alt="" /&gt;' +
+			'&lt;/li&gt;';
+		},
+
+		// 实例化瀑布流组件
+		waterfall = new $.ui.Waterfall( '#waterfall', {
+			load : loadData,
+			create : createCell,
+			colWidth : 252
+		});
+		
+    // 在创建一组瀑布流的图片列表后结束加载
+    waterfall.on( 'createafter', function(){
+		this.loadEnd();
+	});</pre>
+        </div>          
+    </div>     	
+
+    <div id="waterfall"></div>     
+</div>
+
+<script type="text/javascript" src="../base/js/seed-jquery.js"></script>
+<script type="text/javascript" src="../assets/js/shcore.js"></script>
+<script type="text/javascript" src="../assets/js/shbrushjscript.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<script type="text/javascript">
+
+window.initData = [{
+    "imgurl": "images\/t0115bd4cbaac093e33.jpg",
+    "width": 238,
+    "height": 312
+}, {
+    "imgurl": "images\/t013f78633d3a859815.jpg",
+    "width": 238,
+    "height": 352
+}, {
+    "imgurl": "images\/t0114de5c390e356d60.jpg",
+    "width": 238,
+    "height": 337
+}, {
+    "imgurl": "images\/t01b4b08c4b07ab97b4.jpg",
+    "width": 238,
+    "height": 325
+}, {
+    "imgurl": "images\/t014102a0cb0b24e3ba.jpg",
+    "width": 238,
+    "height": 298
+}, {
+    "imgurl": "images\/t01f5d3e0af5af464bb.jpg",
+    "width": 238,
+    "height": 371
+}, {
+    "imgurl": "images\/t01f915b5e5c7f89054.jpg",
+    "width": 238,
+    "height": 336
+}, {
+    "imgurl": "images\/t01828c9eb5c0d0cb8d.jpg",
+    "width": 238,
+    "height": 319
+}, {
+    "imgurl": "images\/t0132cf10b35011409d.jpg",
+    "width": 238,
+    "height": 336
+}, {
+    "imgurl": "images\/t013c7c860db8fe3dec.jpg",
+    "width": 238,
+    "height": 336
+}, {
+    "imgurl": "images\/t017c3a24a727353733.jpg",
+    "width": 238,
+    "height": 313
+}, {
+    "imgurl": "images\/t0168596061da7f114c.jpg",
+    "width": 238,
+    "height": 352
+}, {
+    "imgurl": "images\/t01dd7f9a9c9cde0523.jpg",
+    "width": 238,
+    "height": 354
+}, {
+    "imgurl": "images\/t01bf65d25ed7f70d40.jpg",
+    "width": 238,
+    "height": 315
+}, {
+    "imgurl": "images\/t01fe8efb25c0843340.jpg",
+    "width": 238,
+    "height": 281
+}, {
+    "imgurl": "images\/t01fbae001e81e76a59.jpg",
+    "width": 238,
+    "height": 368
+}, {
+    "imgurl": "images\/t01216ae57f04a4cdc0.jpg",
+    "width": 238,
+    "height": 347
+}, {
+    "imgurl": "images\/t018dfe7cf25d41d0da.jpg",
+    "width": 238,
+    "height": 309
+}, {
+    "imgurl": "images\/t01e44dc41c565abc8a.jpg",
+    "width": 238,
+    "height": 343
+}, {
+    "imgurl": "images\/t014d0a27ef31ba83a8.jpg",
+    "width": 238,
+    "height": 337
+}, {
+    "imgurl": "images\/t014105ee276dc3d531.jpg",
+    "width": 238,
+    "height": 337
+}, {
+    "imgurl": "images\/t019db8590d426a567d.jpg",
+    "width": 238,
+    "height": 317
+}, {
+    "imgurl": "images\/t0155350f2d63eddf4f.jpg",
+    "width": 238,
+    "height": 238
+}, {
+    "imgurl": "images\/t01148b3b07028b6e7a.jpg",
+    "width": 238,
+    "height": 336
+}, {
+    "imgurl": "images\/t010919adfcb15752ae.jpg",
+    "width": 238,
+    "height": 337
+}, {
+    "imgurl": "images\/t01c27382235eb375de.jpg",
+    "width": 238,
+    "height": 358
+}, {
+    "imgurl": "images\/t01af55cb8da8db4f8f.jpg",
+    "width": 238,
+    "height": 336
+}, {
+    "imgurl": "images\/t0153459f746c81c424.jpg",
+    "width": 238,
+    "height": 661
+}, {
+    "imgurl": "images\/t014dc1c1a2d1b3acb3.jpg",
+    "width": 238,
+    "height": 309
+}, {
+    "imgurl": "images\/t01622c50716f572a7c.jpg",
+    "width": 238,
+    "height": 2899
+}];
+
+seed.config({
+    baseUrl : './js/'
+});
+
+seed.use( 'waterfall', function(){
+	
+	var loadData = function(){
+			return window.initData;
+		},
+		
+		createCell = function( data ){
+			return '<li' + ( data.height > 800 ? ' style="height:800px;"' : '' ) + '>' +
+				'<img src="' + data.imgurl + '" width="' + data.width + '" height="' + data.height + '" alt="" />' +
+			'</li>';
+		},
+
+		waterfall = new $.ui.Waterfall( '#waterfall', {
+			load : loadData,
+			create : createCell,
+			colWidth : 252
+		});
+		
+    waterfall.on( 'createafter', function(){
+		this.loadEnd();
+	});
+	
+});
+</script>
+
+</body>
+</html>

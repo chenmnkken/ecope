@@ -1,0 +1,6 @@
+/* @module waterfall_style */
+
+.wf_group{ *zoom:1; font-size:12px; line-height:1.5; }
+.wf_group:after{ content: ".";display: block;clear: both;visibility: hidden;line-height: 0;height: 0; }
+.wf_col{ float:left; width:238px; padding:0 7px; }
+.wf_col li{ width:238px; margin-bottom:14px; *margin-bottom:10px; overflow:hidden; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3); border-radius:2px; }
