@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>InputPlaceholder demo</title>
+<link rel="stylesheet" href="../base/css/reset.css" />
+<link rel="stylesheet" href="../assets/css/demo.css" />
+
+<style type="text/css">
+#email{ border:1px solid #ddd; padding:3px; height:16px; width:180px; }
+#email:focus{ border-color:#000; }
+</style>
+
+</head>
+<body>
+
+<h1>InputPlaceholder demo <a href="https://github.com/chenmnkken/ecope/wiki/InputPlaceholder-%E8%BE%93%E5%85%A5%E6%A1%86%E7%A9%BA%E7%99%BD%E5%8D%A0%E4%BD%8D%E6%96%87%E5%AD%97" target="_blank">#view docs</a></h1>
+<hr />
+
+<div class="wrapper">
+    <div class="example_box">
+        <h5>例子1</h5>
+        <p>为输入框添加空白占位文字</p>
+        <div class="demo_box">
+            <label for="email">电子邮箱：</label><input type="text" id="email" />
+			<div>
+				<a id="btn1" class="btn" href="javascript:;">disable</a>
+				<a id="btn2" class="btn" href="javascript:;">enable</a>
+			</div>
+        </div>        
+        <div class="code_box">
+        <pre class="brush: js;">var ip = new $.ui.InputPlaceholder( '#email', {
+	text : '请输入邮箱'
+});
+
+$( '#btn1' ).on( 'click', function(){
+	ip.disable();
+});
+
+$( '#btn2' ).on( 'click', function(){
+	ip.enable();
+});	</pre>
+        </div>  		
+    </div>
+</div>
+
+<script type="text/javascript" src="../base/js/seed-jquery.js"></script>
+<script type="text/javascript" src="../assets/js/shcore.js"></script>
+<script type="text/javascript" src="../assets/js/shbrushjscript.js"></script>
+<script type="text/javascript">
+SyntaxHighlighter.all();
+</script>
+<script type="text/javascript">
+seed.config({
+    baseUrl : './js/'
+});
+
+seed.use( 'inputplaceholder', function(){    
+    var ip = new $.ui.InputPlaceholder( '#email', {
+		text : '请输入邮箱'
+	});
+	
+	$( '#btn1' ).on( 'click', function(){
+		ip.disable();
+	});
+	
+	$( '#btn2' ).on( 'click', function(){
+		ip.enable();
+	});	
+});
+</script>
+
+</body>
+</html>
