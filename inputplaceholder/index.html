@@ -23,24 +23,24 @@
         <p>为输入框添加空白占位文字</p>
         <div class="demo_box">
             <label for="email">电子邮箱：</label><input type="text" id="email" />
-			<div>
-				<a id="btn1" class="btn" href="javascript:;">disable</a>
-				<a id="btn2" class="btn" href="javascript:;">enable</a>
-			</div>
+            <div>
+                <a id="btn1" class="btn" href="javascript:;">disable</a>
+                <a id="btn2" class="btn" href="javascript:;">enable</a>
+            </div>
         </div>        
         <div class="code_box">
         <pre class="brush: js;">var ip = new $.ui.InputPlaceholder( '#email', {
-	text : '请输入邮箱'
+    text : '请输入邮箱'
 });
 
 $( '#btn1' ).on( 'click', function(){
-	ip.disable();
+    ip.disable();
 });
 
 $( '#btn2' ).on( 'click', function(){
-	ip.enable();
-});	</pre>
-        </div>  		
+    ip.enable();
+});    </pre>
+        </div>          
     </div>
 </div>
 
@@ -56,17 +56,20 @@ seed.config({
 });
 
 seed.use( 'inputplaceholder', function(){    
-    var ip = new $.ui.InputPlaceholder( '#email', {
-		text : '请输入邮箱'
-	});
-	
-	$( '#btn1' ).on( 'click', function(){
-		ip.disable();
-	});
-	
-	$( '#btn2' ).on( 'click', function(){
-		ip.enable();
-	});	
+    
+    $(function(){
+        var ip = new $.ui.InputPlaceholder( '#email', {
+            text : '请输入邮箱'
+        });
+        
+        $( '#btn1' ).on( 'click', function(){
+            ip.disable();
+        });
+        
+        $( '#btn2' ).on( 'click', function(){
+            ip.enable();
+        });    
+    });
 });
 </script>
 
