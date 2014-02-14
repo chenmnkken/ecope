@@ -1,16 +1,24 @@
 /*
 * Drag component for jQuery ( AMD Module )
 *
-* Copyright (c) 2013 Yiguo Chan
+* Copyright (c) 2013-2014 Yiguo Chan
 * Released under the MIT Licenses
 *
 * Docs : https://github.com/chenmnkken/ecope/wiki/Drag-%E6%8B%96%E6%8B%BD
 * Mail : chenmnkken@gmail.com
-* Date : 2013-12-24
+* Date : 2014-2-14
 */
 define(function(){
 
 'use strict';
+
+// 计算元素的定位的位置时需要用到的辅助参数
+var posParams = {
+    left : [ 'left' ],
+    top : [ 'top' ],
+    right : [ 'left', 'Width' ],
+    bottom : [ 'top', 'Height' ]
+};
 
 var defaults = {
     axis       :   null,      // String        设置拖拽的方向，x是横向，y是纵向
@@ -72,7 +80,7 @@ var isIE = $.browser.msie && parseInt( $.browser.version ) < 9,
                 parent = $( offsetParent );
                 
                 if( !$.isWindow(offsetParent) ){
-                    borderWidth = parseFloat( getStyle(parent[0], 'border' + upName + 'Width') );
+                    borderWidth = parseFloat( parent.css('border' + upName + 'Width') );
                 }
                 
                 parentOffset = parent.offset()[ posName ] + borderWidth; 
