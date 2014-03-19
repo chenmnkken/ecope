@@ -1,12 +1,12 @@
 /*
 * Dialog component for jQuery ( AMD Module )
 *
-* Copyright (c) 2013 Yiguo Chan
+* Copyright (c) 2013-2014 Yiguo Chan
 * Released under the MIT Licenses
 *
 * Docs : https://github.com/chenmnkken/ecope/wiki/Dialog-%E5%AF%B9%E8%AF%9D%E6%A1%86
 * Mail : chenmnkken@gmail.com
-* Date : 2013-11-16
+* Date : 2014-03-19
 */
 
 define( [ '../../drag/js/drag' ], function(){
@@ -564,7 +564,11 @@ var easyDialog = {
                             display : 'none',
                             opacity : opacity
                         });
-                    });
+
+                        if( o.elem ){
+                            o.elem.hide();
+                        }    
+                    });                        
                 }        
             });            
         }
@@ -572,6 +576,10 @@ var easyDialog = {
         else{
             overlayElem.hide();
             dialogElem.hide();
+
+            if( o.elem ){
+                o.elem.hide();
+            }                    
         }
 
         if( drag ){
@@ -584,10 +592,6 @@ var easyDialog = {
             btnNo.off( 'click.dialog' );
             btnClose.off( 'click.dialog' );
         }
-        
-        if( o.elem ){
-            o.elem.hide();
-        }        
         
         $win.off( 'resize.dialog' );
         $doc.off( 'keyup.dialog' );
