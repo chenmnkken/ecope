@@ -1,12 +1,12 @@
 /*
 * Waterfall( Fixed Width ) component for jQuery ( AMD Module )
 *
-* Copyright (c) 2013 Yiguo Chan
+* Copyright (c) 2013-2014 Yiguo Chan
 * Released under the MIT Licenses
 *
 * Docs : https://github.com/chenmnkken/ecope/wiki/Waterfall-%E7%AD%89%E5%AE%BD%E7%80%91%E5%B8%83%E6%B5%81
 * Mail : chenmnkken@gmail.com
-* Date : 2013-12-28 
+* Date : 2014-03-24 
 */
 
 define(function(){
@@ -494,9 +494,6 @@ var easyWF = {
         // 强制添加滚动条
         if( $.isWindow(o.container[0]) ){
             o.container[0].document.documentElement.style.overflowY = 'scroll';
-        }
-        else{
-            o.container[0].style.overflowY = 'scroll';
         }
 
         var initPromise,
