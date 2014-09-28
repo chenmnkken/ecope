@@ -6,7 +6,7 @@
 *
 * Docs : https://github.com/chenmnkken/ecope/wiki/Lazyload-%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD
 * Mail : chenmnkken@gmail.com
-* Date : 2013-10-27
+* Date : 2014-09-28
 */
 
 define(function(){
