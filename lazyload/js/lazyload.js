@@ -13,6 +13,16 @@ define(function(){
 
 'use strict';
 
+var defaults = {
+    type       :   'img',           // String        延迟加载的类型 img : 图片 dom : dom元素
+    trigger    :   'scroll',        // String        触发加载的事件类型
+    container  :   window,          // String||Element|jQuery Object 设置在某个容器内滚动
+    axis       :   'y',             // Boolean       是否纵向滚动触发 x : 横向滚动 y : 纵向
+    threshold  :   0,               // Number        还有多少距离触发加载的临界值   
+    duration   :   400,             // Number        动画效果的运行时间
+    attrName   :   'data-lazysrc'   // String        用于存放在img标签上的自定义特性名   
+};
+
 // 修复jQuery在取offset时如果是在一个含有滚动条的容器出错的问题
 $.fn.__offset__ = function(){
     var offset = { top : 0, left : 0 },
@@ -30,14 +40,12 @@ $.fn.__offset__ = function(){
 
 var easyLazyload = {
     
-    triggerHandle : function( o, offset, type ){
+    triggerHandle : function( o, offset ){
         var threshold = o.threshold,
-            scroll = o.scroll,
-            currentOffset;
-            
-        currentOffset = o.isReverse ? offset.offsetReverse : offset.offsetForward;
-        return currentOffset >= ( scroll - threshold ) && currentOffset <= ( o.size + scroll + threshold )
-    },    
+            scroll = o.scroll;
+
+        return offset.offsetReverse >= ( scroll - threshold ) && offset.offsetForward <= ( o.size + scroll + threshold );
+    },  
     
     load : {
         img : function( o, elem, isScroll ){
@@ -147,15 +155,7 @@ var Lazyload = function( target, options ){
         return;
     }
     
-    var o = $.extend({
-            type       :   'img',           // String        延迟加载的类型 img : 图片 dom : dom元素
-            trigger    :   'scroll',        // String        触发加载的事件类型
-            container  :   window,          // String||Element|jQuery Object 设置在某个容器内滚动
-            axis       :   'y',             // Boolean       是否纵向滚动触发 x : 横向滚动 y : 纵向
-            threshold  :   0,               // Number        还有多少距离触发加载的临界值   
-            duration   :   400,             // Number        动画效果的运行时间
-            attrName   :   'data-lazysrc'   // String        用于存放在img标签上的自定义特性名        
-        }, options ),
+    var o = $.extend( {}, defaults, options ),
         
         isY = o.axis === 'y', 
         $win = $( window ),        
@@ -214,7 +214,7 @@ var Lazyload = function( target, options ){
                     $elem.data( 'offset', offset );
                 }
                 
-                isTrigger = triggerHandle( o, offset, eventType );  
+                isTrigger = triggerHandle( o, offset );  
             }
             else{
                 isTrigger = isCustom;
