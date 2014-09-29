@@ -6,7 +6,7 @@
 *
 * Docs : https://github.com/chenmnkken/ecope/wiki/Dialog-%E5%AF%B9%E8%AF%9D%E6%A1%86
 * Mail : chenmnkken@gmail.com
-* Date : 2014-03-19
+* Date : 2014-09-29
 */
 
 define( [ '../../drag/js/drag' ], function(){
@@ -58,23 +58,6 @@ var isIE6 = $.browser.msie && $.browser.version === '6.0',
     overlayElem, dialogElem, btnYes, btnNo, btnClose, wrapElem, drag, timer, win, doc, docElem, body, $win, $doc, $body;
     
 var easyDialog = {
-
-    /*
-     * 首字母大写转换
-     * @param { String } 要转换的字符串
-     * @return { String } 转换后的字符串 top => Top
-     */    
-    capitalize : function( str ){
-        var firstStr = str.charAt(0);
-        return firstStr.toUpperCase() + str.replace( firstStr, '' );
-    },
-    
-    // 获取当前页面的尺寸
-    getDocSize : function( name ){
-        var upName = easyDialog.capitalize( name );
-        
-        return Math.max( docElem['scroll' + upName], docElem['client' + upName] );         
-    },
     
     // 防止IE6的select穿透
     appendIframe : function( elem ){
@@ -294,9 +277,9 @@ var easyDialog = {
                 
                 // 然后再将遮罩层的宽高设置成整个页面的宽高
                 overlayElem.css({
-                    width : easyDialog.getDocSize( 'width' ) + 'px',
-                    height : easyDialog.getDocSize( 'height' ) + 'px'
-                });        
+                    width : docElem.clientWidth + 'px',
+                    height : docElem.scrollHeight + 'px'
+                });               
             }
             
             easyDialog.bindExpression( o );
@@ -330,6 +313,18 @@ var easyDialog = {
         
         if( o.left ){
             cssMap.left = o.left;
+            cssMap.marginLeft = '';
+        }
+
+        if( o.bottom ){
+            cssMap.bottom = o.bottom;
+            cssMap.top = 'auto';
+            cssMap.marginTop = '';
+        }
+
+        if( o.right ){
+            cssMap.right = o.right;
+            cssMap.left = 'auto';
             cssMap.marginLeft = '';
         }
 
@@ -629,10 +624,10 @@ var easyDialog = {
             // ie6不对遮罩层进行固定定位
             if( isIE6 ){
                 overlayElem.css({
-                    width : easyDialog.getDocSize( 'width' ) + 'px',
-                    height : easyDialog.getDocSize( 'height' ) + 'px'
+                    width : docElem.clientWidth + 'px',
+                    height : docElem.scrollHeight + 'px'
                 });             
-            }
+            }        
         }
         
         dialogElem.css({
