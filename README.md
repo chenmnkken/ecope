@@ -8,8 +8,6 @@ ecope 是一个基于 jQuery 的组件库，集合了一些常见的简单实用
 
 其中 seed-jquery.js 是 seed(加载器) 与 jQuery(基础类库) 的集合体。
 
-有问题可以提 issue，或者加入 QQ群：202604349 讨论。 
-
 [在线文档](https://github.com/chenmnkken/ecope/wiki)
 
 ***
